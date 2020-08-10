@@ -19,16 +19,16 @@ class Client {
 
   date: Date;
 
-  constructor(
-    name: string,
-    birth: string,
-    cpf: number,
-    phone: number,
-    email: string,
-    address: string,
-    obs: string,
-    date: Date,
-  ) {
+  constructor({
+    name,
+    birth,
+    cpf,
+    phone,
+    email,
+    address,
+    obs,
+    date,
+  }: Omit<Client, 'id'>) {
     this.id = uuid();
     this.name = name;
     this.birth = birth;

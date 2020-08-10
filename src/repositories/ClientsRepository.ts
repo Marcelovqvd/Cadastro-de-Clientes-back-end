@@ -1,5 +1,16 @@
 import Client from '../models/client';
 
+interface CreateClientDTO {
+  name: string;
+  birth: string;
+  cpf: number;
+  phone: number;
+  email: string;
+  address: string;
+  obs: string;
+  date: Date;
+}
+
 class ClientsRepository {
   private clientsList: Client[];
 
@@ -7,17 +18,21 @@ class ClientsRepository {
     this.clientsList = [];
   }
 
-  public create(
-    name: string,
-    birth: string,
-    cpf: number,
-    phone: number,
-    email: string,
-    address: string,
-    obs: string,
-    date: Date,
-  ): Client {
-    const client = new Client(
+  public all(): Client[] {
+    return this.clientsList;
+  }
+
+  public create({
+    name,
+    birth,
+    cpf,
+    phone,
+    email,
+    address,
+    obs,
+    date,
+  }: CreateClientDTO): Client {
+    const client = new Client({
       name,
       birth,
       cpf,
@@ -26,7 +41,7 @@ class ClientsRepository {
       address,
       obs,
       date,
-    );
+    });
 
     this.clientsList.push(client);
 
