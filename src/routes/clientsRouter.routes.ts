@@ -1,20 +1,23 @@
 import { Router } from 'express';
-import Client from '../models/client';
+
+import ClientsRepository from '../repositories/ClientsRepository';
 
 const clientsRouter = Router();
-
-const clientsList: Client[] = [];
-
-clientsRouter.get('/', (request, response) => {
-  return response.json(clientsList);
-});
+const clientsRepository = new ClientsRepository();
 
 clientsRouter.post('/', (request, response) => {
   const { name, birth, cpf, phone, email, address, obs, date } = request.body;
 
-  const client = new Client(name, birth, cpf, phone, email, address, obs, date);
-
-  clientsList.push(client);
+  const client = clientsRepository.create(
+    name,
+    birth,
+    cpf,
+    phone,
+    email,
+    address,
+    obs,
+    date,
+  );
 
   return response.json(client);
 });

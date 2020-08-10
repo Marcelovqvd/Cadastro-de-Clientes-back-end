@@ -24,6 +24,7 @@ registros;
 - A listagem deverá¡ ter um filtro textual que efetua a busca em todos os
 campos por substring case-insensitive;
 - A lista deve possuir sempre 10 registros e ser paginada.
+
 Considerações finais:
 - Todos os dados devem ser salvos localmente, porém deve se ter efeito de requisição
 - Comentários no código não são obrigatórios, porém ajudam a validar o seu conhecimento sobre o assunto.
