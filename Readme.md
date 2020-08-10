@@ -18,13 +18,22 @@ internet).
 5) E-mail: Verificar se possui somente um @, com texto antes e depois.
 6) Observação: Máximo de 300 caracteres.
 *) Implementar outras validações são um diferencial.
+
 2 -  Uma listagem de clientes com possibilidade de edição e exclusão de
 registros;
 - A listagem deverá¡ ter um filtro textual que efetua a busca em todos os
 campos por substring case-insensitive;
 - A lista deve possuir sempre 10 registros e ser paginada.
+
 Considerações finais:
 - Todos os dados devem ser salvos localmente, porém deve se ter efeito de requisição
 - Comentários no código não são obrigatórios, porém ajudam a validar o seu conhecimento sobre o assunto.
 - Opcional: Criar um README com instruções de setup do sistema para podermos
 executá-lo e avaliar o resultado
+
+
+UUIDV4 - para id
+yarn add uuidv4
+
+lib para datas
+yarn add date-fns
