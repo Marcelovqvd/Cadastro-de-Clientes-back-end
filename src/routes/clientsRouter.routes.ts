@@ -1,19 +1,7 @@
 import { Router } from 'express';
-import { uuid } from 'uuidv4';
+import Client from '../models/client';
 
 const clientsRouter = Router();
-
-interface Client {
-  id: string;
-  name: string;
-  birth: string;
-  cpf: number;
-  phone: number;
-  email: string;
-  address: string;
-  obs: string;
-  date: Date;
-}
 
 const clientsList: Client[] = [];
 
@@ -24,17 +12,7 @@ clientsRouter.get('/', (request, response) => {
 clientsRouter.post('/', (request, response) => {
   const { name, birth, cpf, phone, email, address, obs, date } = request.body;
 
-  const client = {
-    id: uuid(),
-    name,
-    birth,
-    cpf,
-    phone,
-    email,
-    address,
-    obs,
-    date,
-  };
+  const client = new Client(name, birth, cpf, phone, email, address, obs, date);
 
   clientsList.push(client);
 
