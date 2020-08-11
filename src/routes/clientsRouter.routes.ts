@@ -1,6 +1,7 @@
-import { Router, request, response } from 'express';
+import { Router } from 'express';
 
 import ClientsRepository from '../repositories/ClientsRepository';
+import CreateClientService from '../services/CreateClientService';
 
 const clientsRouter = Router();
 const clientsRepository = new ClientsRepository();
@@ -12,20 +13,26 @@ clientsRouter.get('/', (request, response) => {
 });
 
 clientsRouter.post('/', (request, response) => {
-  const { name, birth, cpf, phone, email, address, obs, date } = request.body;
+  try {
+    const { name, birth, cpf, phone, email, address, obs, date } = request.body;
 
-  const client = clientsRepository.create({
-    name,
-    birth,
-    cpf,
-    phone,
-    email,
-    address,
-    obs,
-    date,
-  });
+    const createClient = new CreateClientService(clientsRepository);
 
-  return response.json(client);
+    const client = createClient.execute({
+      name,
+      birth,
+      cpf,
+      phone,
+      email,
+      address,
+      obs,
+      date,
+    });
+
+    return response.json(client);
+  } catch (err) {
+    return response.status(400).json({ error: err.message });
+  }
 });
 
 export default clientsRouter;
