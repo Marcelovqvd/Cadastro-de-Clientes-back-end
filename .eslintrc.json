@@ -30,7 +30,8 @@
   },
   "settings": {
     "import/resolver": {
-      "typescript": {}
+      "node": {
+        "extensions": [".ts", ".tsx", ".native.js"]
+      }
     }
-  }
 }
