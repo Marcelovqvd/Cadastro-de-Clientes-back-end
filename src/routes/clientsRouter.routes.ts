@@ -1,5 +1,4 @@
 import { Router, request, response } from 'express';
-
 import ClientsRepository from '../repositories/ClientsRepository';
 
 const clientsRouter = Router();
